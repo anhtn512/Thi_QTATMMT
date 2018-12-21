@@ -32,10 +32,10 @@ sh mod_security.sh
 
 ### Test
 - Tấn công sqli và XSS
--  http://192.168.1.4/raovat//index.php?mod=baiviet&id=6 order by 7-- - 
-- http://192.168.1.4/raovat//index.php?mod=baiviet&id=-6 union select 1,2,3,4,5,6-- - 
+-  http://ipserver/raovat//index.php?mod=baiviet&id=6 order by 7-- - 
+- http://ipserver/raovat//index.php?mod=baiviet&id=-6 union select 1,2,3,4,5,6-- - 
 - http://ipserver/raovat/index.php?mod=baiviet&id=-6 union select 1,2,unhex(hex(group_concat(table_name))),4,5,6 from information_schema.tables where table_schema=database()-- -
-- http://192.168.1.4/raovat/index.php?mod=baiviet&id=-6 union select 1,2,unhex(hex(group_concat(table_name))),4,5,6 from information_schema.tables where table_schema=database()-- -
+- http://ipserver/raovat/index.php?mod=baiviet&id=-6 union select 1,2,unhex(hex(group_concat(table_name))),4,5,6 from information_schema.tables where table_schema=database()-- -
 
 ## Bài: Cài đặt Suricata
 ### Yêu cầu hệ thống:
