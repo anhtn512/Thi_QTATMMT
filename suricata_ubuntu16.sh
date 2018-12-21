@@ -18,6 +18,7 @@ echo "CREATE TEST.RULES"
 
 cat > /etc/suricata/rules/test.rules <<\EOF
 alert icmp any any -> $HOME_NET any (msg:"ICMP connection attempt"; sid:1000002; rev:1;) 
+drop icmp any any -> $HOME_NET any (msg:"ICMP connection attempt"; sid:1000002; rev:1;) 
 alert tcp any any -> $HOME_NET 23 (msg:"TELNET connection attempt"; sid:1000003; rev:1;)
 EOF
 
