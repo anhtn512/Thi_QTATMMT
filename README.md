@@ -35,6 +35,7 @@ sh mod_security.sh
 - Ubuntu 14 or ubuntu 16
 
 ### Run
+Tùy vào phiên bản ubuntu mà chạy 14 or 16
 ```
 chmod 755 suricata*
 sh suricata_ubuntu14.sh or sh suricata_ubuntu16.sh
