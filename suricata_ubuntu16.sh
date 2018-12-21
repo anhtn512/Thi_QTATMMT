@@ -23,11 +23,14 @@ EOF
 
 sed -i "s|default-rule-path: /var/lib/suricata/rules|default-rule-path: /etc/suricata/rules|" /etc/suricata/suricata.yaml
 sed -i "s| - suricata.rules| - test.rules|" /etc/suricata/suricata.yaml
-sed -i "s|HOME_NET: \"[192.168.0.0/16,10.0.0.0/8,172.16.0.0/12]\"|HOME_NET: \"[$(/sbin/ifconfig ens33 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}')]\"|" /etc/suricata/suricata.yaml
+ip=$(/sbin/ifconfig ens33 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}')
+sed -i "s| HOME_NET:| HOME_NET:  \"[$ip]\"\n #HOME_NET:|" /etc/suricata/suricata.yaml
 
 echo "EDIT CONFIG FLOW"
 echo "chinh sua file /etc/suricata/suricata.yaml:
 - HOME_NET: IP cua may
+- default-rule-path: /etc/suricata/rules
+- rule-files: - test.rules
 Chay chuong trinh: (rm -rf /var/run/suricata.pid) /usr/bin/suricata -D -c /etc/suricata/suricata.yaml -i  ens33
 Xem log: tail -50f /var/log/suricata/fast.log
 "
