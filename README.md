@@ -1,4 +1,11 @@
 # Script cho QTATHTM
+
+## Get code về máy:
+```
+git clone https://github.com/anhtn512/Thi_QTATMMT
+cd Thi_QTATMMT
+```
+
 ## Bài: CẤU HÌNH MOD__REQUIRE_TIMEOUT 
 ### Yêu cầu hệ thống:
 - Centos 6.5 32bit
