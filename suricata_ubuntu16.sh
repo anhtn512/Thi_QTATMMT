@@ -40,11 +40,11 @@ Chay chuong trinh: (rm -rf /var/run/suricata.pid) /usr/bin/suricata -D -c /etc/s
 Xem log: tail -50f /var/log/suricata/fast.log
 * test voi nmap:
 - nmap -sP $ip --disable-arp-ping
-- NMAP TCP Scan: nmap -sT -p22 $ip
-- NMAP XMAS Scan (lay flag: FIN, PSH, URG): nmap -sX -p22 $ip
-- NMAP FIN Scan (lay flag FIN): nmap -sF -p22 $ip
-- NMAP NULL Scan (TCP khong chua flag): nmap -sN -p22 $ip
-- NMAP UDP Scan: nmap -sU -p68 $ip
+- NMAP TCP Scan: nmap -sT -p 1-65535 $ip
+- NMAP XMAS Scan (lay flag: FIN, PSH, URG): nmap -sX -p 1-65535 $ip
+- NMAP FIN Scan (lay flag FIN): nmap -sF -p 1-65535 $ip
+- NMAP NULL Scan (TCP khong chua flag): nmap -sN -p 1-65535 $ip
+- NMAP UDP Scan: nmap -sU -p 1-655535 $ip
 "
 
 
