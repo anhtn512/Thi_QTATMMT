@@ -5,4 +5,7 @@ service httpd restart
 ip=$(/sbin/ifconfig eth1 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}')
 echo "
 Thuc hien tan cong mang o may kali: perl slowloris.pl -dns $ip
+Giai thich: 
+dat thoi gian cho header it nhat 20s, voi moi 500 byte du lieu nhan duoc tang thoi gian cho them 1s, thoi gian cho khong vuot qua 40s
+dat thoi gian cho body la 20s, voi moi 500 byte du lieu nhan duoc tang thoi gian cho them 1s
 "
