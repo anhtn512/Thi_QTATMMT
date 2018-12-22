@@ -19,11 +19,11 @@ echo "CREATE TEST.RULES"
 cat > /etc/suricata/rules/test.rules <<\EOF
 alert icmp any any -> $HOME_NET any (msg:"ICMP connection attempt"; sid:1000002; rev:1;) 
 alert tcp any any -> $HOME_NET 23 (msg:"TELNET connection attempt"; sid:1000003; rev:1;)
-alert tcp any any -> $HOME_NET 22 (msg: "NMAP TCP Scan";sid:10000005; rev:2; )
-alert tcp any any -> $HOME_NET 22 (msg:"Nmap XMAS Tree Scan"; flags:FPU; sid:1000006; rev:1; )
-alert tcp any any -> $HOME_NET 22 (msg:"Nmap FIN Scan"; flags:F; sid:1000008; rev:1;)
-alert tcp any any -> $HOME_NET 22 (msg:"Nmap NULL Scan"; flags:0; sid:1000009; rev:1; )
-alert udp any any -> $HOME_NET any ( msg:"Nmap UDP Scan"; sid:1000010; rev:1; )
+alert tcp any any -> $HOME_NET any (msg: "NMAP TCP Scan"; threshold: type both, track by_src, count 10, seconds 60; sid:10000005; rev:2; )
+alert tcp any any -> $HOME_NET any (msg:"Nmap XMAS Tree Scan"; flags:FPU; threshold: type both, track by_src, count 10, seconds 60; sid:1000006; rev:1; )
+alert tcp any any -> $HOME_NET any (msg:"Nmap FIN Scan"; flags:F; threshold: type both, track by_src, count 10, seconds 60; sid:1000008; rev:1;)
+alert tcp any any -> $HOME_NET any (msg:"Nmap NULL Scan"; flags:0; threshold: type both, track by_src, count 10, seconds 60; sid:1000009; rev:1; )
+alert udp any any -> $HOME_NET any ( msg:"Nmap UDP Scan"; threshold: type both, track by_src, count 10, seconds 60; sid:1000010; rev:1; )
 EOF
 
 sed -i "s|default-rule-path: /var/lib/suricata/rules|default-rule-path: /etc/suricata/rules|" /etc/suricata/suricata.yaml
