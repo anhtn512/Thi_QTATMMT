@@ -19,3 +19,10 @@ cat > /etc/apache2/mods-enabled/security2.conf <<\EOF
 EOF
 ln -s /usr/share/modsecurity-crs/base_rules/modsecurity_crs_41_sql_injection_attacks.conf /usr/share/modsecurity-crs/activated_rules/
 ln -s /usr/share/modsecurity-crs/base_rules/modsecurity_crs_41_xss_attacks.conf /usr/share/modsecurity-crs/activated_rules/
+service apache2 reload
+ip=$(/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}')
+
+echo "Test sqli
+http://$ip/dvwa/vulnerabilities/sqli/?id=%' or '0'='0
+http://$ip/dvwa/vulnerabilities/sqli/?id%' or 0=0 union select null, version() #
+"
